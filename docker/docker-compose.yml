@@ -1,0 +1,17 @@
+version: '3.7'
+
+networks:
+  frontera:
+    driver: bridge
+
+services:
+  frontera-be:
+    container_name: frontera-be
+    restart: always
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    networks:
+      - frontera
+    ports:
+      - "8000:8000"
