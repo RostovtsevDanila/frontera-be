@@ -5,3 +5,4 @@ django-environ >=0.8
 django-filter >= 21.1
 django-cors-headers >= 3.11
 djoser >= 2.1
+drf-yasg >= 1.20
