@@ -20,6 +20,8 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
 )
 
+from frontera.urls import urlpatterns as frontera_urls
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', include('djoser.urls')),
@@ -27,4 +29,8 @@ urlpatterns = [
     path('auth/', include('djoser.urls.jwt')),
     path('auth/jwt/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('auth/jwt/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+]
+
+urlpatterns += [
+    path('', include(frontera_urls)),
 ]
