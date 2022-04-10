@@ -16,6 +16,8 @@ schema_view = get_schema_view(
    permission_classes=(permissions.AllowAny,),
 )
 
+from frontera.urls import urlpatterns as frontera_urls
+
 urlpatterns = [
     path(
         'swagger-ui/',
@@ -34,4 +36,8 @@ urlpatterns = [
     path('auth/', include('djoser.urls.jwt')),
     path('auth/jwt/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('auth/jwt/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+]
+
+urlpatterns += [
+    path('', include(frontera_urls)),
 ]
