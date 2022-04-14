@@ -26,6 +26,6 @@ $ python3 manage.py createsuperuser
 $ python3 manage.py runserver 0.0.0.0:8000
 ```
 
-Admin panel: http://localhost:8000/admin/
+Admin panel: https://frontera-be.herokuapp.com/admin/
 
-Swagger: http://localhost:8000/swagger-ui/
+Swagger: https://frontera-be.herokuapp.com/swagger-ui/
