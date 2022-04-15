@@ -46,22 +46,6 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'application.urls'
 
-TEMPLATES = [
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-            ],
-        },
-    },
-]
-
 if IS_HEROKU:
     database_url = urlparse(os.environ['DATABASE_URL'])
     DATABASES = {
@@ -162,9 +146,8 @@ SIMPLE_JWT = {
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATIC_URL = '/static/'
-
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-
+STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 
 TEMPLATES = [
