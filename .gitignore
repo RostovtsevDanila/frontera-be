@@ -80,3 +80,4 @@ var/
 /static/
 /.pycharmrc
 .env
+data
