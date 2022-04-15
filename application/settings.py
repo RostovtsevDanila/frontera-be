@@ -1,6 +1,8 @@
 import os
 from datetime import timedelta
 from pathlib import Path
+from urllib.parse import urlparse
+
 from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -11,6 +13,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 ALLOWED_HOSTS = ['*']
 
+DEBUG = os.getenv('DEBUG', True) in [1, '1', True, 'True', 'true']
+IS_HEROKU = os.getenv('IS_HEROKU', False) in [1, '1', True, 'True', 'true']
 
 # Application definition
 
@@ -58,7 +62,29 @@ TEMPLATES = [
     },
 ]
 
-DATABASES = {}
+if IS_HEROKU:
+    database_url = urlparse(os.environ['DATABASE_URL'])
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': database_url.path.strip('/'),
+            'USER': database_url.username,
+            'PASSWORD': database_url.password,
+            'HOST': database_url.hostname,
+            'PORT': database_url.port,
+        }
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'postgres',
+            'USER': 'postgres',
+            'PASSWORD': 'postgres',
+            'HOST': 'localhost',
+            'PORT': '5444',
+        }
+    }
 
 WSGI_APPLICATION = 'application.wsgi.application'
 
