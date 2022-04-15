@@ -1,4 +1,4 @@
-from .settings import *
+from application.settings import *
 
 DEBUG = True
 

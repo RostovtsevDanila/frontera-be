@@ -1,6 +1,6 @@
 from urllib.parse import urlparse
 
-from .settings import *
+from application.settings import *
 
 DEBUG = False
 
