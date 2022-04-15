@@ -58,6 +58,8 @@ TEMPLATES = [
     },
 ]
 
+DATABASES = {}
+
 WSGI_APPLICATION = 'application.wsgi.application'
 
 AUTH_USER_MODEL = 'frontera.User'
