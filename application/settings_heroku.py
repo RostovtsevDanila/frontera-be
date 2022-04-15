@@ -7,7 +7,7 @@ DEBUG = False
 database_url = urlparse(os.environ['DATABASE_URL'])
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': database_url.path.strip('/'),
         'USER': database_url.username,
         'PASSWORD': database_url.password,
